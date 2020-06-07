@@ -6,18 +6,18 @@ class Complex(
     type: ComplexType = ComplexType.Cartesian
 ) : Comparable<Complex> {
 
-    // not testable
-    // useful for comparing doubles
+    // Not testable.
+    // Useful for comparing doubles.
     private val delta = 0.0001
 
-    // the way that the user wants to use to create a Complex numbers
+    // The way that the user wants to use to create a Complex numbers.
     enum class ComplexType {
         Cartesian,
         PolarDegree,
         PolarRadian
     }
 
-    // the way that the user wants to sort Complex numbers
+    // The way that the user wants to sort Complex numbers.
     enum class SortingState {
         Length,
         Phi,
@@ -25,18 +25,18 @@ class Complex(
         Imaginary
     }
 
-    // the direction of the rotation that the user wants to make
+    // The direction of the rotation that the user wants to make.
     enum class Direction(val rawValue: Int) {
         Positive(1),
         Negative(-1)
     }
 
-    // class-level object, because it does not make sense for 1-1 Complex number
+    // Class-level object, because it does not make sense for only 1-1 Complex number.
     companion object {
         var sortingState = SortingState.Length
     }
 
-    // the real and imaginary part of the Complex number
+    // The real and imaginary part of the Complex number.
     val real: Double
     val imaginary: Double
 
@@ -73,12 +73,12 @@ class Complex(
     val conjugate
         get() = Complex(real, -imaginary)
 
-    // steepness of the complex number
-    // it is not very useful... but i want something over the basics
+    // Steepness of the complex number.
+    // It's more likely a syntactic sugar.
     val derivative = tan(phiInRadian)
 
-    // area under the complex number
-    // it is not very useful... but i want something over the basics
+    // Area under the complex number.
+    // It's more likely a syntactic sugar.
     val integral = real * imaginary / 2.0
 
     private fun Double.toRadian() = this / 180 * PI
@@ -147,7 +147,7 @@ class Complex(
 
     operator fun unaryPlus() = this
 
-    // doesn't make sense
+    // Doesn't make sense:
     // operator fun not() = ???
 
     operator fun inc() = this + 1.toComplex()
@@ -193,7 +193,7 @@ class Complex(
     operator fun div(divider: Byte) = div(divider.toComplex())
     operator fun div(divider: Short) = div(divider.toComplex())
 
-    // doesn't make sense
+    // Doesn't make sense:
     // operator fun rem(rem: Complex)
     // operator fun rangeTo(max: Complex)
     // operator fun contains(other: Complex)
@@ -201,7 +201,7 @@ class Complex(
     // operator fun set(index: Int)
     // operator fun invoke(index: Int)
 
-    // doesn't make sense (immutability)
+    // Doesn't make sense (because of the immutability):
     // operator fun plusAssign(other: Complex)
     // operator fun minusAssign(other: Complex)
     // operator fun timesAssign(other: Complex)
@@ -227,7 +227,7 @@ class Complex(
         Complex(r, phiInRadian + direction.rawValue * radian, ComplexType.PolarRadian)
 }
 
-// these properties can be done with .i too, but i think it is enough, that would be just copy paste
+// These properties can be done with .i too, but i think it is enough, that would be just copy paste.
 
 fun Double.toComplex() = Complex(this)
 val Double.j: Complex

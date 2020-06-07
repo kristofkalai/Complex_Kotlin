@@ -72,9 +72,9 @@ class ComplexTest {
         assert(complex1.hashCode() == complex2.hashCode())
         assert(complex1.hashCode() != complex3.hashCode())
 
-        // it is a little bit tricky
+        // It is a little bit tricky,
         // equality works with complex1 and complex4, but
-        // in reality the imaginary part of the two Complex numbers are not the same
+        // in reality the imaginary part of the two Complex numbers are not the same,
         // so the hashCode will not be the same!
         assert(complex1.hashCode() != complex4.hashCode())
     }
@@ -143,11 +143,11 @@ class ComplexTest {
         assert(complex.unaryPlus() == complex)
 
         assert(complex.inc() == Complex(3.0, 3.4))
-        // immutability
+        // Immutability.
         assert(complex.inc() == Complex(3.0, 3.4))
         assert(complex.dec() == Complex(1.0, 3.4))
 
-        // immutability
+        // Immutability.
         assert(complex == Complex(2.0, 3.4))
 
         assert(complex.component1() == complex.real)
