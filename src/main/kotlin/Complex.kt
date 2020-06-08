@@ -1,6 +1,6 @@
 import kotlin.math.*
 
-class Complex(
+class Complex private constructor(
     arg1: Double = 0.0,
     arg2: Double = 0.0,
     type: ComplexType = ComplexType.Cartesian
@@ -31,9 +31,18 @@ class Complex(
         Negative(-1)
     }
 
-    // Class-level object, because it does not make sense for only 1-1 Complex number.
     companion object {
+
+        // Class-level object, because it does not make sense for only 1-1 Complex number.
         var sortingState = SortingState.Length
+
+        // Factory methods in order to create Complex numbers more easily.
+        fun fromCartesian(x: Double = 0.0, y: Double = 0.0) = Complex(x, y, ComplexType.Cartesian)
+        fun fromPolarDegree(r: Double = 0.0, phiInDegree: Double = 0.0) =
+            Complex(r, phiInDegree, ComplexType.PolarDegree)
+
+        fun fromPolarRadian(r: Double = 0.0, phiInRadian: Double = 0.0) =
+            Complex(r, phiInRadian, ComplexType.PolarRadian)
     }
 
     // The real and imaginary part of the Complex number.
@@ -229,54 +238,54 @@ class Complex(
 
 // These properties can be done with .i too, but i think it is enough, that would be just copy paste.
 
-fun Double.toComplex() = Complex(this)
+fun Double.toComplex() = Complex.fromCartesian(this)
 val Double.j: Complex
-    get() = Complex(0.0, this)
+    get() = Complex.fromCartesian(0.0, this)
 
 operator fun Double.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Double.minus(decrement: Complex) = toComplex().minus(decrement)
 operator fun Double.times(multiplier: Complex) = toComplex().times(multiplier)
 operator fun Double.div(divider: Complex) = toComplex().div(divider)
 
-fun Float.toComplex() = Complex(toDouble())
+fun Float.toComplex() = Complex.fromCartesian(toDouble())
 val Float.j: Complex
-    get() = Complex(0.0, toDouble())
+    get() = Complex.fromCartesian(0.0, toDouble())
 
 operator fun Float.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Float.minus(decrement: Complex) = toComplex().minus(decrement)
 operator fun Float.times(multiplier: Complex) = toComplex().times(multiplier)
 operator fun Float.div(divider: Complex) = toComplex().div(divider)
 
-fun Int.toComplex() = Complex(toDouble())
+fun Int.toComplex() = Complex.fromCartesian(toDouble())
 val Int.j: Complex
-    get() = Complex(0.0, toDouble())
+    get() = Complex.fromCartesian(0.0, toDouble())
 
 operator fun Int.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Int.minus(decrement: Complex) = toComplex().minus(decrement)
 operator fun Int.times(multiplier: Complex) = toComplex().times(multiplier)
 operator fun Int.div(divider: Complex) = toComplex().div(divider)
 
-fun Long.toComplex() = Complex(toDouble())
+fun Long.toComplex() = Complex.fromCartesian(toDouble())
 val Long.j: Complex
-    get() = Complex(0.0, toDouble())
+    get() = Complex.fromCartesian(0.0, toDouble())
 
 operator fun Long.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Long.minus(decrement: Complex) = toComplex().minus(decrement)
 operator fun Long.times(multiplier: Complex) = toComplex().times(multiplier)
 operator fun Long.div(divider: Complex) = toComplex().div(divider)
 
-fun Byte.toComplex() = Complex(toDouble())
+fun Byte.toComplex() = Complex.fromCartesian(toDouble())
 val Byte.j: Complex
-    get() = Complex(0.0, toDouble())
+    get() = Complex.fromCartesian(0.0, toDouble())
 
 operator fun Byte.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Byte.minus(decrement: Complex) = toComplex().minus(decrement)
 operator fun Byte.times(multiplier: Complex) = toComplex().times(multiplier)
 operator fun Byte.div(divider: Complex) = toComplex().div(divider)
 
-fun Short.toComplex() = Complex(toDouble())
+fun Short.toComplex() = Complex.fromCartesian(toDouble())
 val Short.j: Complex
-    get() = Complex(0.0, toDouble())
+    get() = Complex.fromCartesian(0.0, toDouble())
 
 operator fun Short.plus(increment: Complex) = toComplex().plus(increment)
 operator fun Short.minus(decrement: Complex) = toComplex().minus(decrement)
