@@ -21,7 +21,6 @@ class ComplexTest {
         complex2 += 1
         checkInitValues(complex1, 5.0, 4.3)
         checkInitValues(complex2, 6.0, 4.3)
-
     }
 
     private fun checkInitValues(complex: Complex, expectedReal: Double, expectedImaginary: Double) {
@@ -72,7 +71,7 @@ class ComplexTest {
         assert(complex1.hashCode() == complex2.hashCode())
         assert(complex1.hashCode() != complex3.hashCode())
 
-        // It is a little bit tricky,
+        // It is a bit tricky,
         // equality works with complex1 and complex4, but
         // in reality the imaginary part of the two Complex numbers are not the same,
         // so the hashCode will not be the same!

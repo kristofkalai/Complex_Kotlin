@@ -10,7 +10,7 @@ class Complex private constructor(
     // Useful for comparing doubles.
     private val delta = 0.0001
 
-    // The way that the user wants to use to create a Complex numbers.
+    // The way that the user wants to create a Complex numbers.
     enum class ComplexType {
         Cartesian,
         PolarDegree,
@@ -236,7 +236,7 @@ class Complex private constructor(
         Complex(r, phiInRadian + direction.rawValue * radian, ComplexType.PolarRadian)
 }
 
-// These properties can be done with .i too, but i think it is enough, that would be just copy paste.
+// These properties can be done with .i too, but I think it is enough, that would be just copy and paste.
 
 fun Double.toComplex() = Complex.fromCartesian(this)
 val Double.j: Complex
